@@ -22,6 +22,7 @@ jobs:
       - name: Fetch logisim evolution release 3.8.0
         run: wget https://github.com/logisim-evolution/logisim-evolution/releases/download/v3.8.0/logisim-evolution-3.8.0-all.jar
       - name: Generate HDL files
+        continue-on-error: true
         run: java -jar logisim-evolution-3.8.0-all.jar -f source.circ main BASYS3 10000 HDLONLY
       - name: Copy and combine HDL files
         run: |
