@@ -1,0 +1,54 @@
+documentation:
+  author: Tholin
+  bidirectional:
+  - A0
+  - A1
+  - B0
+  - B1
+  - Y0
+  - Y1
+  - Y2
+  - unused
+  clock_hz: 10
+  description: Some test stuffs
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Uses some extra steps in the TT4 GitHub pipeline to extract Verilog
+    descriptions of a LogisimEvolution project.
+
+    '
+  how_to_test: 'N/A
+
+    '
+  inputs:
+  - A1
+  - A2
+  - A3
+  - A4
+  - A5
+  - A6
+  - A7
+  - A8
+  language: Verilog
+  outputs:
+  - Y1
+  - Y2
+  - Y3
+  - Y4
+  - Y5
+  - Y6
+  - Y7
+  - Y8
+  picture: ''
+  tag: test
+  title: LogisimEvolution Project Template
+project:
+  source_files:
+  - a
+  - b
+  - c
+  tiles: 1x1
+  top_module: tt_um_as_my_logisim_project
+  wokwi_id: 0
+yaml_version: 4

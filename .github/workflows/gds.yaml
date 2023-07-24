@@ -1,0 +1,75 @@
+name: gds
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  prep_files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Install JRE
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+      - name: Install required packages
+        run: pip install pyyaml
+      - name: Fetch logisim evolution release 3.8.0
+        run: wget https://github.com/logisim-evolution/logisim-evolution/releases/download/v3.8.0/logisim-evolution-3.8.0-all.jar
+      - name: Generate HDL files
+        run: java -jar logisim-evolution-3.8.0-all.jar -f source.circ main BASYS3 10000 HDLONLY
+      - name: Copy and combine HDL files
+        run: |
+             rm -rf src/logisim
+             mkdir src/logisim
+             cp -r ~/logisim_evolution_workspace/source/main/verilog/* src/logisim
+             rm -rf src/logisim/toplevel
+             find src/logisim -name "*.v" -type f -print0 | xargs -0 cat > src/top_r.v
+      - name: Generate top level module
+        run: |
+             python3 scripts/gen_toplevel.py
+             rm src/top_r.v
+      - name: Push back into repo
+        run: |
+             git config --global user.name "GitHub Action"
+             git config --global user.email "nope@example.com"
+             git add src/ --all
+             git commit -m "Automated Verilog generation"
+             git push
+             
+  gds:
+    needs: prep_files
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Build GDS
+        uses: TinyTapeout/tt-gds-action@tt04
+
+  #gl_test:
+  #  needs: gds
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: checkout repo
+  #      uses: actions/checkout@v3
+  #      with:
+  #        submodules: recursive
+
+  #    - name: GL test
+  #      uses: TinyTapeout/tt-gds-action/gl_test@tt04
+    
+  viewer:
+    needs: gds
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    steps:
+      - uses: TinyTapeout/tt-gds-action/viewer@tt04
