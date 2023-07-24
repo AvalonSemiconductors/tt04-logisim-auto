@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE map SYSTEM "http://java.sun.com/dtd/preferences.dtd">
+<map MAP_XML_VERSION="1.0">
+  <entry key="SelectedBoard" value="BASYS3"/>
+  <entry key="afterAdd" value="Verilog"/>
+  <entry key="defaultAppearance" value="logisim_evolution"/>
+  <entry key="dialogDirectory" value=""/>
+  <entry key="layoutZoom" value="1.0"/>
+  <entry key="pokeRadix2" value="10signed"/>
+  <entry key="tickFrequency" value="1.0"/>
+  <entry key="windowHeight" value="1080"/>
+  <entry key="windowLocation" value="3840,0"/>
+  <entry key="windowMainSplit" value="0.24166666666666667"/>
+  <entry key="windowState" value="6"/>
+  <entry key="windowWidth" value="1920"/>
+</map>
