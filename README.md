@@ -1,3 +1,6 @@
+[![gds](https://github.com/AvalonSemiconductors/tt04-logisim-auto/actions/workflows/gds.yaml/badge.svg)](https://github.com/AvalonSemiconductors/tt04-logisim-auto/actions/workflows/gds.yaml)
+[![docs](https://github.com/AvalonSemiconductors/tt04-logisim-auto/actions/workflows/docs.yaml/badge.svg)](https://github.com/AvalonSemiconductors/tt04-logisim-auto/actions/workflows/docs.yaml)
+
 # LogisimEvolution for TinyTapeout 4
 
 This repository contains an automated flow for going from a LogisimEvolution circuit file, to a GDSII file ready for submission to TinyTapeout 4.
