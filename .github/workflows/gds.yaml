@@ -42,9 +42,7 @@ jobs:
         run: |
              git config --global user.name "GitHub Action"
              git config --global user.email "nope@example.com"
-             git add src/ --all
-             git commit -m "Automated Verilog generation"
-             git push
+             bash scripts/commit_if_changed.sh
       - name: Tarball generated files
         run: tar -cf /tmp/generated.tar -C src/ .
       - name: Upload new files into cache

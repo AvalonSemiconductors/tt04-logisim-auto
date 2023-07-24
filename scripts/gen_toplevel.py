@@ -1,5 +1,4 @@
 import yaml
-from datetime import datetime
 
 with open("info.yaml") as f:
 	doc = yaml.safe_load(f)
@@ -22,4 +21,3 @@ with open("src/top.v", "w") as f2:
 			line = line.replace("{namehere}", top_name)
 			f2.write(line)
 		f2.write("\n")
-		f2.write(f"//{datetime.now()}");
